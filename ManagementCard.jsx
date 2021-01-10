@@ -9,6 +9,8 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import LabelCard from './LabelCard';
+
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -62,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ManagementCard = (props) => {
+  const { labels, setLabels } = props;
+
   const classes = useStyles();
 
   const [activeTabId, setActiveTabId] = useState(0);
@@ -88,10 +92,8 @@ const ManagementCard = (props) => {
       </AppBar>
       <TabPanel value={activeTabId} index={0}>
         <Paper elevation={2} className={classes.paper}>
-          <Button variant="contained" onClick={() => null}>
-            New label
-          </Button>
-          {/* <Button onClick={this.addLabel}></Button> */}
+          <Button variant="contained">New label</Button>
+          <LabelCard key="123456" label={labels[0]} setLabels={setLabels} />
         </Paper>
       </TabPanel>
       <TabPanel value={activeTabId} index={1}>
