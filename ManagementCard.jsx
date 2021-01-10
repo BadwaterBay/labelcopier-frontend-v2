@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 import LabelCardList from './LabelCardList';
+import generateDefaultLabelWithUniqueId from './generateDefaultLabelWithUniqueId';
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -74,6 +75,12 @@ const ManagementCard = (props) => {
     setActiveTabId(latestActiveTabId);
   };
 
+  const handleAddNewLabel = () => {
+    const newLabel = generateDefaultLabelWithUniqueId();
+
+    setLabels((oldLabels) => [newLabel, ...oldLabels]);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -92,7 +99,9 @@ const ManagementCard = (props) => {
       </AppBar>
       <TabPanel value={activeTabId} index={0}>
         <Paper elevation={2} className={classes.paper}>
-          <Button variant="contained">New label</Button>
+          <Button variant="contained" onClick={handleAddNewLabel}>
+            New label
+          </Button>
           <LabelCardList labels={labels} setLabels={setLabels} />
         </Paper>
       </TabPanel>
