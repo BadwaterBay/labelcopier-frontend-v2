@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 
-import ManagementCard from './ManagementCard';
+import defaultRepoInfo from './defaultRepoInfo';
 import RepoInfoInputCard from './RepoInfoInputCard';
+import ManagementCard from './ManagementCard';
 
 const Labelcopier = () => {
-  const defaultRepoInfo = {
-    homeRepoOwner: '',
-    homeRepoName: '',
-    templateRepoOwner: '',
-    templateRepoName: '',
+  const [repoInfo, setRepoInfo] = useState(defaultRepoInfo);
+
+  const demoLabel = {
+    id: '123456',
+    name: 'Dummy label',
+    description: 'This is a demo label',
+    color: '#ffaa05',
   };
 
-  const [repoInfo, setRepoInfo] = useState(defaultRepoInfo);
+  const existingLabels = [demoLabel];
+  const [labels, setLabels] = useState(existingLabels);
 
   return (
     <div>
@@ -39,7 +36,7 @@ const Labelcopier = () => {
             <RepoInfoInputCard repoInfo={repoInfo} setRepoInfo={setRepoInfo} />
           </Grid>
           <Grid item xs={12}>
-            <ManagementCard />
+            <ManagementCard labels={labels} setLabels={setLabels} />
           </Grid>
         </Grid>
       </Container>

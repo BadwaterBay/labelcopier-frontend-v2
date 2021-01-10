@@ -26,42 +26,42 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RepoInfoInputCard = (props) => {
-  const classes = useStyles();
-
   const {
     repoInfo: { homeRepoOwner, homeRepoName, templateRepoOwner, templateRepoName },
     setRepoInfo,
   } = props;
 
+  const classes = useStyles();
+
   const handleUpdateHomeRepoOwner = (e) => {
-    const updatedValue = e.target.value;
+    const newValue = e.target.value;
     setRepoInfo((oldState) => ({
       ...oldState,
-      homeRepoOwner: updatedValue,
+      homeRepoOwner: newValue,
     }));
   };
 
   const handleUpdateHomeRepoName = (e) => {
-    const updatedValue = e.target.value;
+    const newValue = e.target.value;
     setRepoInfo((oldState) => ({
       ...oldState,
-      homeRepoName: updatedValue,
+      homeRepoName: newValue,
     }));
   };
 
   const handleUpdateTemplateRepoOwner = (e) => {
-    const updatedValue = e.target.value;
+    const newValue = e.target.value;
     setRepoInfo((oldState) => ({
       ...oldState,
-      templateRepoOwner: updatedValue,
+      templateRepoOwner: newValue,
     }));
   };
 
   const handleUpdateTemplateRepoName = (e) => {
-    const updatedValue = e.target.value;
+    const newValue = e.target.value;
     setRepoInfo((oldState) => ({
       ...oldState,
-      templateRepoName: updatedValue,
+      templateRepoName: newValue,
     }));
   };
 
