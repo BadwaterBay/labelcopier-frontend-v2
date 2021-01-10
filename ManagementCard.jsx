@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-function TabPanel(props) {
+const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -27,7 +27,7 @@ function TabPanel(props) {
       )}
     </div>
   );
-}
+};
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -35,65 +35,72 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
-  };
-}
+const tabPanelProps = (index) => ({
+  id: `scrollable-auto-tab-${index}`,
+  'aria-controls': `scrollable-auto-tabpanel-${index}`,
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
+    flexGrow: 1,
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  tabs: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
 }));
 
-function ManagementCard() {
+const ManagementCard = (props) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [activeTabId, setActiveTabId] = useState(0);
+
+  const handleChangeTab = (_event, latestActiveTabId) => {
+    setActiveTabId(latestActiveTabId);
   };
-
-  const addLabel = () => {};
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={value}
-          onChange={handleChange}
+          value={activeTabId}
+          onChange={handleChangeTab}
           indicatorColor="primary"
           textColor="primary"
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Labels" {...a11yProps(0)} />
-          <Tab label="Milestones" {...a11yProps(1)} />
+          <Tab label="Labels" {...tabPanelProps(0)} />
+          <Tab label="Milestones" {...tabPanelProps(1)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={activeTabId} index={0}>
         <Paper elevation={2} className={classes.paper}>
-          Manage labels
+          <Button variant="contained" onClick={() => null}>
+            New label
+          </Button>
           {/* <Button onClick={this.addLabel}></Button> */}
         </Paper>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={activeTabId} index={1}>
         <Paper elevation={2} className={classes.paper}>
           Manage milestones
         </Paper>
       </TabPanel>
     </div>
   );
-}
+};
 
 export default ManagementCard;
