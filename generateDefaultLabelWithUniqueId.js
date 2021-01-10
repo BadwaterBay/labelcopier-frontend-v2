@@ -2,8 +2,8 @@ import { generateUniqueId } from './helpers';
 
 const generateDefaultLabelWithUniqueId = () => ({
   id: generateUniqueId(),
-  name: 'Dummy label',
-  description: 'Dummy description',
+  name: 'Default label',
+  description: 'Default description',
   color: '#ffad05',
 });
 
