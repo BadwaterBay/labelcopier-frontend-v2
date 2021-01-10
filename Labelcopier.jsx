@@ -7,19 +7,15 @@ import Button from '@material-ui/core/Button';
 import defaultRepoInfo from './defaultRepoInfo';
 import RepoInfoInputCard from './RepoInfoInputCard';
 import ManagementCard from './ManagementCard';
+import dummyLabels from './dummyLabels';
 
 const Labelcopier = () => {
   const [repoInfo, setRepoInfo] = useState(defaultRepoInfo);
+  console.log(repoInfo);
 
-  const demoLabel = {
-    id: '123456',
-    name: 'Dummy label',
-    description: 'This is a demo label',
-    color: '#ffaa05',
-  };
-
-  const existingLabels = [demoLabel];
+  const existingLabels = dummyLabels;
   const [labels, setLabels] = useState(existingLabels);
+  console.log(labels);
 
   return (
     <div>
