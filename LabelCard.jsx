@@ -35,49 +35,41 @@ const LabelCard = (props) => {
 
   const classes = useStyles();
 
-  const handleUpdateName = (e) => {
-    const newValue = e.target.value;
+  const getNewValueFunc = (prop) => {
+    const lookupTable = {
+      name: (e) => e.target.value,
+      color: (e) => e.hex,
+      description: (e) => e.target.value,
+    };
+    return lookupTable[prop];
+  };
+
+  const handleUpdateLabelProps = (prop, e) => {
+    const getNewValue = getNewValueFunc(prop);
+    const newValue = getNewValue(e) || null;
     setLabels((oldLabels) =>
       oldLabels.map((label) => {
         if (label.id === id) {
           return {
             ...label,
-            name: newValue,
+            [prop]: newValue,
           };
         }
         return label;
       })
     );
+  };
+
+  const handleUpdateName = (e) => {
+    handleUpdateLabelProps('name', e);
   };
 
   const handleUpdateColor = (e) => {
-    const newValue = e.hex;
-    setLabels((oldLabels) =>
-      oldLabels.map((label) => {
-        if (label.id === id) {
-          return {
-            ...label,
-            color: newValue,
-          };
-        }
-        return label;
-      })
-    );
+    handleUpdateLabelProps('color', e);
   };
 
   const handleUpdateDescription = (e) => {
-    const newValue = e.target.value;
-    setLabels((oldLabels) =>
-      oldLabels.map((label) => {
-        if (label.id === id) {
-          return {
-            ...label,
-            description: newValue,
-          };
-        }
-        return label;
-      })
-    );
+    handleUpdateLabelProps('description', e);
   };
 
   return (
