@@ -68,8 +68,10 @@ const RepoInfoInputCard = (props) => {
   return (
     <Paper elevation={2} className={classes.paper}>
       <form className={classes.form} noValidate autoComplete="off">
-        <div>Manage your repository</div>
         <Grid container spacing={3}>
+          <Grid item xs={12}>
+            Manage your repository
+          </Grid>
           <Grid item xs={6}>
             <TextField
               label="Repository owner"
@@ -91,8 +93,10 @@ const RepoInfoInputCard = (props) => {
             />
           </Grid>
         </Grid>
-        <div>Copy from a repository (Optional)</div>
         <Grid container spacing={3}>
+          <Grid item xs={12}>
+            Copy from a repository (Optional)
+          </Grid>
           <Grid item xs={6}>
             <TextField
               label="Repository owner"

@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 
 import LabelCardList from './LabelCardList';
 import generateDefaultLabelWithUniqueId from './generateDefaultLabelWithUniqueId';
+import MilestoneCard from './MilestoneCard';
+import MilestoneCardList from './MilestoneCardList';
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -65,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ManagementCard = (props) => {
-  const { labels, setLabels } = props;
+  const { labels, setLabels, milestones, setMilestones } = props;
 
   const classes = useStyles();
 
@@ -77,7 +79,6 @@ const ManagementCard = (props) => {
 
   const handleAddNewLabel = () => {
     const newLabel = generateDefaultLabelWithUniqueId();
-
     setLabels((oldLabels) => [newLabel, ...oldLabels]);
   };
 
@@ -107,7 +108,7 @@ const ManagementCard = (props) => {
       </TabPanel>
       <TabPanel value={activeTabId} index={1}>
         <Paper elevation={2} className={classes.paper}>
-          Manage milestones
+          <MilestoneCardList milestones={milestones} setMilestones={setMilestones} />
         </Paper>
       </TabPanel>
     </div>
