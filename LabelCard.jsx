@@ -36,12 +36,12 @@ const LabelCard = (props) => {
   const classes = useStyles();
 
   const getNewValueFunc = (prop) => {
-    const lookupTable = {
+    const getNewValueFuncLookupTable = {
       name: (e) => e.target.value,
       color: (e) => e.hex,
       description: (e) => e.target.value,
     };
-    return lookupTable[prop];
+    return getNewValueFuncLookupTable[prop];
   };
 
   const handleUpdateLabelProps = (prop, e) => {
@@ -81,7 +81,7 @@ const LabelCard = (props) => {
             value={name}
             required
             fullWidth
-            variant="filled"
+            variant="standard"
             onChange={handleUpdateName}
           />
         </Grid>
@@ -93,7 +93,7 @@ const LabelCard = (props) => {
             label="Description"
             value={description}
             fullWidth
-            variant="filled"
+            variant="standard"
             onChange={handleUpdateDescription}
           />
         </Grid>

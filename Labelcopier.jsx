@@ -8,6 +8,7 @@ import defaultRepoInfo from './defaultRepoInfo';
 import RepoInfoInputCard from './RepoInfoInputCard';
 import ManagementCard from './ManagementCard';
 import dummyLabels from './dummyLabels';
+import dummyMilestones from './dummyMilestones';
 
 const Labelcopier = () => {
   const [repoInfo, setRepoInfo] = useState(defaultRepoInfo);
@@ -16,6 +17,10 @@ const Labelcopier = () => {
   const existingLabels = dummyLabels;
   const [labels, setLabels] = useState(existingLabels);
   console.log(labels);
+
+  const existingMilestones = dummyMilestones;
+  const [milestones, setMilestones] = useState(existingMilestones);
+  console.log(milestones);
 
   return (
     <div>
@@ -32,7 +37,12 @@ const Labelcopier = () => {
             <RepoInfoInputCard repoInfo={repoInfo} setRepoInfo={setRepoInfo} />
           </Grid>
           <Grid item xs={12}>
-            <ManagementCard labels={labels} setLabels={setLabels} />
+            <ManagementCard
+              labels={labels}
+              setLabels={setLabels}
+              milestones={milestones}
+              setMilestones={setMilestones}
+            />
           </Grid>
         </Grid>
       </Container>
