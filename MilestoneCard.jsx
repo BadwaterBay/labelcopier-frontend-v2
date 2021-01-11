@@ -54,7 +54,7 @@ const MilestoneCard = (props) => {
 
   const handleUpdateMilestoneProps = (prop, e) => {
     const getNewValue = getNewValueFunc(prop);
-    const newValue = getNewValue(e) || null;
+    const newValue = getNewValue(e) || '';
     setMilestones((oldMilestones) =>
       oldMilestones.map((milestone) => {
         if (milestone.id === id) {

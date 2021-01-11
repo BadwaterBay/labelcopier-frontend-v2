@@ -46,7 +46,7 @@ const LabelCard = (props) => {
 
   const handleUpdateLabelProps = (prop, e) => {
     const getNewValue = getNewValueFunc(prop);
-    const newValue = getNewValue(e) || null;
+    const newValue = getNewValue(e) || '';
     setLabels((oldLabels) =>
       oldLabels.map((label) => {
         if (label.id === id) {

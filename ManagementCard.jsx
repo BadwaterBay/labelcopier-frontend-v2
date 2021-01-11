@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import LabelCardList from './LabelCardList';
 import generateDefaultLabelWithUniqueId from './generateDefaultLabelWithUniqueId';
 import MilestoneCardList from './MilestoneCardList';
+import generateDefaultMilestoneWithUniqueId from './generateDefaultMilestoneWithUniqueId';
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -81,6 +82,11 @@ const ManagementCard = (props) => {
     setLabels((oldLabels) => [newLabel, ...oldLabels]);
   };
 
+  const handleAddNewMilestone = () => {
+    const newMilestone = generateDefaultMilestoneWithUniqueId();
+    setMilestones((oldMilestones) => [newMilestone, ...oldMilestones]);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -107,6 +113,9 @@ const ManagementCard = (props) => {
       </TabPanel>
       <TabPanel value={activeTabId} index={1}>
         <Paper elevation={2} className={classes.paper}>
+          <Button variant="contained" onClick={handleAddNewMilestone}>
+            New milestone
+          </Button>
           <MilestoneCardList milestones={milestones} setMilestones={setMilestones} />
         </Paper>
       </TabPanel>
