@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 
 import LabelCardList from './LabelCardList';
 import generateDefaultLabelWithUniqueId from './generateDefaultLabelWithUniqueId';
-import MilestoneCard from './MilestoneCard';
 import MilestoneCardList from './MilestoneCardList';
 
 const TabPanel = (props) => {
