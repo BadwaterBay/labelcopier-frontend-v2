@@ -6,6 +6,12 @@ const generateDefaultMilestoneWithUniqueId = () => ({
   title: 'Default milestone',
   description: 'Default description',
   dueOn: '',
+  originalState: '',
+  originalTitle: '',
+  originalDescription: '',
+  originalDueOn: '',
+  action: 'create',
+  validation: 'valid',
 });
 
 export default generateDefaultMilestoneWithUniqueId;
