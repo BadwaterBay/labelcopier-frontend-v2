@@ -10,9 +10,8 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 import LabelCardList from './LabelCardList';
-import generateDefaultLabelWithUniqueId from './generateDefaultLabelWithUniqueId';
 import MilestoneCardList from './MilestoneCardList';
-import generateDefaultMilestoneWithUniqueId from './generateDefaultMilestoneWithUniqueId';
+import { generateDefaultLabel, generateDefaultMilestone } from './core';
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -78,12 +77,12 @@ const ManagementCard = (props) => {
   };
 
   const handleAddNewLabel = () => {
-    const newLabel = generateDefaultLabelWithUniqueId();
+    const newLabel = generateDefaultLabel();
     setLabels((oldLabels) => [newLabel, ...oldLabels]);
   };
 
   const handleAddNewMilestone = () => {
-    const newMilestone = generateDefaultMilestoneWithUniqueId();
+    const newMilestone = generateDefaultMilestone();
     setMilestones((oldMilestones) => [newMilestone, ...oldMilestones]);
   };
 
