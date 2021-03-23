@@ -3,6 +3,8 @@ const defaultRepoInfo = {
   homeRepoName: '',
   templateRepoOwner: '',
   templateRepoName: '',
+  token: '',
+  domain: 'github',
 };
 
 export default defaultRepoInfo;
